@@ -39,7 +39,11 @@ export const ScreenControllers = ({
 
       {/* Big Pause button */}
       <VideoActionIcon onClick={onClick} visible={showPauseIcon}>
-        <Image src={pauseVideoSvg} alt="Pause video" />
+        <Image
+          src={pauseVideoSvg}
+          alt="Pause video"
+          visibility={["hidden", "visible"]}
+        />
       </VideoActionIcon>
 
       {/* Watch again button */}

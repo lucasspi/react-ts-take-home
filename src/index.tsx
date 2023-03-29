@@ -5,7 +5,6 @@ import { ChakraBaseProvider } from "@chakra-ui/react";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.css";
 
 const root = ReactDOMClient.createRoot(
   document.getElementById("root") as HTMLElement

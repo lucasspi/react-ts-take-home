@@ -29,15 +29,25 @@ export const VolumeBlock = ({
   }, [volume]);
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box display="flex" alignItems="center" px={[2, 0]}>
       <Button onClick={onClick}>{volumeIcon}</Button>
-      <SliderInput
-        min={0}
-        max={1}
-        step={0.01}
-        value={volume}
-        onChange={(e) => handleAudioVolume(e)}
-      />
+      <Box display={["none", "flex"]}>
+        <SliderInput
+          min={0}
+          max={1}
+          step={0.01}
+          value={volume}
+          onChange={(e) => handleAudioVolume(e)}
+          sx={{
+            height: "4px",
+            width: "100%",
+            background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${
+              volume * 100
+            }%, #ffffff30 ${volume * 100}%, #ffffff30 100%)`,
+            borderRadius: "2px",
+          }}
+        />
+      </Box>
     </Box>
   );
 };

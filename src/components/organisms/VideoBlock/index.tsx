@@ -12,6 +12,7 @@ import { VideoOverlay } from "components/atoms/VideoOverlay";
 import playSvg from "assets/icons/play-icon.svg";
 import pauseSvg from "assets/icons/pause-icon.svg";
 import expandSvg from "assets/icons/expand-icon.svg";
+import { VideoSource } from "components/atoms/VideoSource";
 
 interface VideoBlockProps {
   isLoading: boolean;
@@ -43,23 +44,18 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
       position="relative"
       width="100%"
       justifyContent="center"
-      overflow="hidden"
+      overflow={["visible", "hidden"]}
       onMouseLeave={() => setMouseHover(false)}
       onMouseEnter={() => setMouseHover(true)}
     >
-      <video
+      <VideoSource
         id="videoId"
-        autoPlay
-        playsInline
-        preload="auto"
-        tabIndex={-1}
         ref={videoElement}
         onTimeUpdate={handleOnTimeUpdate}
         onClick={togglePlay}
         onLoadedData={() => setLoading(false)}
-      >
-        <source src={VIDEO_URL} type="video/mp4" />
-      </video>
+        url={VIDEO_URL}
+      />
 
       <ScreenControllers
         onClick={togglePlay}
@@ -77,10 +73,30 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
           (!playerState.progress && !playerState.isPlaying)
         }
       />
-
-      <div className="controls">
+      <Box
+        position="absolute"
+        bottom="16px"
+        width={["100%", "96%"]}
+        height="48px"
+        background="#00000080"
+        backdropFilter="blur(4px)"
+        borderBottomRadius="16px"
+        zIndex={2}
+        transform={[
+          "translateY(150%)",
+          mouseHover ? "translateY(0%)" : "translateY(165%)",
+        ]}
+        transition="all 0.4s ease-in-out;"
+      >
         <SliderInput
-          className="progress-range"
+          sx={{
+            position: "absolute",
+            top: "-6px",
+            border: "none",
+            height: "6px",
+            width: "100%",
+            background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${playerState.progress}%, #ffffff30 ${playerState.progress}%, #ffffff30 100%)`,
+          }}
           min={0}
           max={100}
           value={playerState.progress}
@@ -92,8 +108,9 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
           justifyContent="space-between"
           alignItems="center"
           px={4}
+          py={1}
         >
-          <Box display="flex" alignItems="center" gap="16px">
+          <Box display="flex" alignItems="center" gap={["0px", "16px"]}>
             <Button onClick={togglePlay}>
               {!playerState.isPlaying ? (
                 <Image src={playSvg} alt="play icon" />
@@ -107,7 +124,7 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
               onClick={toggleMute}
             />
 
-            <Box ml={12} color="white">
+            <Box ml={[2, 12]} color="white" display="flex">
               {playerState.currentTime} / {playerState.duration}
             </Box>
           </Box>
@@ -125,7 +142,7 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
             </Box>
           </Box>
         </Box>
-      </div>
+      </Box>
     </Box>
   );
 };
