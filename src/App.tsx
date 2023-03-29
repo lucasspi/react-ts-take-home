@@ -10,7 +10,7 @@ export default function App() {
     <Box height="100vh" width="100%" bg="#F0EAE5">
       <Container display="flex" flexDir="column" alignItems="center" p={[2, 8]}>
         <Box maxW="720px">
-          {!isLoading && (
+          {isLoading && (
             <Box display="flex" justifyContent="center">
               Loading...
             </Box>
