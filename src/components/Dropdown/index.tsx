@@ -54,6 +54,7 @@ export const Dropdown = ({
           </Box>
           {options?.map((item) => (
             <Button
+              key={item.value}
               pl={6}
               py={1}
               width="100%"
