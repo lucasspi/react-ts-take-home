@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { Box, Button, Image } from "@chakra-ui/react";
-import useVideoPlayer from "../../hooks/useVideoPlayer";
-import { VELOCITY_OPTIONS } from "../../contants/velocityOptions";
-import playSvg from "../../assets/icons/play-icon.svg";
-import pauseSvg from "../../assets/icons/pause-icon.svg";
+import useVideoPlayer from "hooks/useVideoPlayer";
+import { VELOCITY_OPTIONS } from "constants/velocityOptions";
+import { Dropdown } from "components/atoms/Dropdown";
+import { VolumeBlock } from "components/atoms/VolumeBlock";
 
-import expandSvg from "../../assets/icons/expand-icon.svg";
-import { Dropdown } from "../../components/Dropdown";
-import { VolumeBlock } from "../VolumeBlock";
+import playSvg from "assets/icons/play-icon.svg";
+import pauseSvg from "assets/icons/pause-icon.svg";
+import expandSvg from "assets/icons/expand-icon.svg";
 
 interface VideoBlockProps {
   isLoading: boolean;

@@ -1,9 +1,9 @@
 import { Box, Button, Image } from "@chakra-ui/react";
 import { ChangeEvent, useMemo } from "react";
 
-import highVolumeSvg from "../../assets/icons/high-volume-icon.svg";
-import medVolumeSvg from "../../assets/icons/med-volume-icon.svg";
-import muteVolumeSvg from "../../assets/icons/mute-volume-icon.svg";
+import highVolumeSvg from "assets/icons/high-volume-icon.svg";
+import medVolumeSvg from "assets/icons/med-volume-icon.svg";
+import muteVolumeSvg from "assets/icons/mute-volume-icon.svg";
 
 interface VolumeBlockProps {
   volume: number;
