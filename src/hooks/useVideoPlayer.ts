@@ -39,12 +39,17 @@ const useVideoPlayer = (videoElement: RefObject<HTMLVideoElement>) => {
         (videoElement.current?.duration || 0)) *
       100;
 
+    if (progress === 100) {
+      videoElement.current?.pause();
+    }
+
     setPlayerState({
       ...playerState,
       progress,
       currentTime: convertSecondsInMinutes(
         videoElement.current?.currentTime || 0
       ),
+      isPlaying: progress === 100 ? false : playerState.isPlaying,
     });
   };
 

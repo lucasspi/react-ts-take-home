@@ -1,6 +1,7 @@
 import { Box, Button, Image } from "@chakra-ui/react";
 import { ChangeEvent, useMemo } from "react";
 
+import { SliderInput } from "components/atoms/SliderInput";
 import highVolumeSvg from "assets/icons/high-volume-icon.svg";
 import medVolumeSvg from "assets/icons/med-volume-icon.svg";
 import muteVolumeSvg from "assets/icons/mute-volume-icon.svg";
@@ -30,11 +31,10 @@ export const VolumeBlock = ({
   return (
     <Box display="flex" alignItems="center">
       <Button onClick={onClick}>{volumeIcon}</Button>
-      <input
-        type="range"
-        min="0"
-        max="1"
-        step="0.01"
+      <SliderInput
+        min={0}
+        max={1}
+        step={0.01}
         value={volume}
         onChange={(e) => handleAudioVolume(e)}
       />

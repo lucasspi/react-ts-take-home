@@ -1,9 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Box, Button, Image } from "@chakra-ui/react";
 import useVideoPlayer from "hooks/useVideoPlayer";
 import { VELOCITY_OPTIONS } from "constants/velocityOptions";
-import { Dropdown } from "components/atoms/Dropdown";
-import { VolumeBlock } from "components/atoms/VolumeBlock";
+
+import { Dropdown } from "components/molecules/Dropdown";
+import { ScreenControllers } from "components/molecules/ScreenControllers";
+import { VolumeBlock } from "components/molecules/VolumeBlock";
+import { SliderInput } from "components/atoms/SliderInput";
+import { VideoOverlay } from "components/atoms/VideoOverlay";
 
 import playSvg from "assets/icons/play-icon.svg";
 import pauseSvg from "assets/icons/pause-icon.svg";
@@ -19,6 +23,7 @@ const VIDEO_URL =
 
 export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
   const videoElement = useRef<HTMLVideoElement>(null);
+  const [mouseHover, setMouseHover] = useState(false);
   const {
     playerState,
     togglePlay,
@@ -39,6 +44,8 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
       width="100%"
       justifyContent="center"
       overflow="hidden"
+      onMouseLeave={() => setMouseHover(false)}
+      onMouseEnter={() => setMouseHover(true)}
     >
       <video
         id="videoId"
@@ -53,17 +60,39 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
       >
         <source src={VIDEO_URL} type="video/mp4" />
       </video>
-      <div className="overlay" onClick={togglePlay} />
+
+      <ScreenControllers
+        onClick={togglePlay}
+        mouseHover={mouseHover}
+        progress={playerState.progress}
+        isPlaying={playerState.isPlaying}
+      />
+
+      {/* Background Overlay */}
+      <VideoOverlay
+        onClick={togglePlay}
+        visible={
+          mouseHover ||
+          playerState.progress === 100 ||
+          (!playerState.progress && !playerState.isPlaying)
+        }
+      />
+
       <div className="controls">
-        <input
-          type="range"
+        <SliderInput
           className="progress-range"
-          min="0"
-          max="100"
+          min={0}
+          max={100}
           value={playerState.progress}
           onChange={(e) => handleVideoProgress(e)}
         />
-        <div className="controls-actions">
+
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          px={4}
+        >
           <Box display="flex" alignItems="center" gap="16px">
             <Button onClick={togglePlay}>
               {!playerState.isPlaying ? (
@@ -95,7 +124,7 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
               </Button>
             </Box>
           </Box>
-        </div>
+        </Box>
       </div>
     </Box>
   );

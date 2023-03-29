@@ -1,22 +1,6 @@
 #video-wrapper:hover .controls {
   transform: translateY(0%);
 }
-#video-wrapper:hover .overlay {
-  visibility: visible;
-  opacity: 1;
-}
-
-.overlay {
-  background: linear-gradient(transparent, #00000033);
-  bottom: 0px;
-  height: 264px;
-  visibility: hidden;
-  width: 100%;
-  opacity: 0;
-  position: absolute;
-  transition: 500ms;
-  z-index: 1;
-}
 
 .controls {
   position: absolute;
@@ -33,13 +17,6 @@
   transition: all 0.4s ease-in-out; */
 }
 
-.controls-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-}
-
 .progress-range {
   position: absolute;
   top: -6px;
@@ -47,15 +24,4 @@
   background: rgba(0, 0, 0, 0.28);
   height: 6px;
   width: 100%;
-}
-
-.velocity {
-  appearance: none;
-  background: none;
-  color: white;
-  outline: none;
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 800;
 }

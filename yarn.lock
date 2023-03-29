@@ -1692,7 +1692,7 @@
     "@chakra-ui/react-use-previous" "2.0.5"
     "@chakra-ui/shared-utils" "2.0.5"
 
-"@chakra-ui/slider@2.0.23", "@chakra-ui/slider@^2.0.23":
+"@chakra-ui/slider@2.0.23":
   version "2.0.23"
   resolved "https://registry.yarnpkg.com/@chakra-ui/slider/-/slider-2.0.23.tgz#9130c7aee8ca876be64d1aeba6b84fe421c8207b"
   integrity sha512-/eyRUXLla+ZdBUPXpakE3SAS2JS8mIJR6qcUYiPVKSpRAi6tMyYeQijAXn2QC1AUVd2JrG8Pz+1Jy7Po3uA7cA==
