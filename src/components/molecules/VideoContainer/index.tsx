@@ -7,12 +7,12 @@ import { ScreenControllers } from "components/molecules/ScreenControllers";
 import { VolumeBlock } from "components/molecules/VolumeBlock";
 import { SliderInput } from "components/atoms/SliderInput";
 import { VideoOverlay } from "components/atoms/VideoOverlay";
+import { VideoState } from "store/videoStore";
 
 import playSvg from "assets/icons/play-icon.svg";
 import pauseSvg from "assets/icons/pause-icon.svg";
 import expandSvg from "assets/icons/expand-icon.svg";
 import { VideoSource } from "components/atoms/VideoSource";
-import { VideoState } from "store/videoStore";
 
 interface VideoContainerProps {
   isLoading: boolean;
