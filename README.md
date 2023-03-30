@@ -48,6 +48,11 @@ Once the build is complete the deploy will start to S3 bucket called `withours.s
     └── App.tsx                 # Entry point
 
 
+There are two approaches to handle the Video actions:
+- Using `zustand` as required in the Take home description
+- Using a simple hook called `useVideoPlayer`. Since this is a very small case for web player, the hook would be useful.
+
+In case you want to try boths approaches just go to `App.tsx` and uncomment the import `import { VideoBlock } from "components/organisms/VideoBlockUsingHook";`
 
 ## Tech Stack
 
