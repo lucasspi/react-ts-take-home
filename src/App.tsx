@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Box, Container } from "@chakra-ui/react";
 
-import { VideoBlock } from "components/organisms/VideoBlock";
+import { VideoBlock } from "components/organisms/VideoBlockUsingZustand";
+// import { VideoBlock } from "components/organisms/VideoBlockUsingHook";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);

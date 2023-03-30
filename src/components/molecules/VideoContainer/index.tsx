@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
+import { RefObject, useState } from "react";
 import { Box, Button, Image } from "@chakra-ui/react";
-import useVideoPlayer from "hooks/useVideoPlayer";
-import { VELOCITY_OPTIONS } from "constants/velocityOptions";
 
+import { VELOCITY_OPTIONS } from "constants/velocityOptions";
 import { Dropdown } from "components/molecules/Dropdown";
 import { ScreenControllers } from "components/molecules/ScreenControllers";
 import { VolumeBlock } from "components/molecules/VolumeBlock";
@@ -13,28 +12,39 @@ import playSvg from "assets/icons/play-icon.svg";
 import pauseSvg from "assets/icons/pause-icon.svg";
 import expandSvg from "assets/icons/expand-icon.svg";
 import { VideoSource } from "components/atoms/VideoSource";
+import { VideoState } from "store/videoStore";
 
-interface VideoBlockProps {
+interface VideoContainerProps {
   isLoading: boolean;
   setLoading: (e: boolean) => void;
+  forwardedRef: RefObject<HTMLVideoElement>;
+  playerState: VideoState;
+  togglePlay: () => void;
+  handleOnTimeUpdate: () => void;
+  handleVideoProgress: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleAudioVolume: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleVideoSpeed: (event: number) => void;
+  toggleMute: () => void;
+  toggleFullscreen: () => void;
 }
 
 const VIDEO_URL =
   "https://ours-wellness-testing-public.s3.us-west-2.amazonaws.com/video-1080+(1).mp4";
 
-export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
-  const videoElement = useRef<HTMLVideoElement>(null);
+export const VideoContainer = ({
+  isLoading,
+  setLoading,
+  forwardedRef,
+  playerState,
+  togglePlay,
+  handleOnTimeUpdate,
+  handleVideoProgress,
+  handleAudioVolume,
+  handleVideoSpeed,
+  toggleMute,
+  toggleFullscreen,
+}: VideoContainerProps) => {
   const [mouseHover, setMouseHover] = useState(false);
-  const {
-    playerState,
-    togglePlay,
-    handleOnTimeUpdate,
-    handleVideoProgress,
-    handleAudioVolume,
-    handleVideoSpeed,
-    toggleMute,
-    toggleFullscreen,
-  } = useVideoPlayer(videoElement);
 
   return (
     <Box
@@ -50,7 +60,7 @@ export const VideoBlock = ({ isLoading, setLoading }: VideoBlockProps) => {
     >
       <VideoSource
         id="videoId"
-        ref={videoElement}
+        forwardedRef={forwardedRef}
         onTimeUpdate={handleOnTimeUpdate}
         onClick={togglePlay}
         onLoadedData={() => setLoading(false)}

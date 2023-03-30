@@ -1,10 +1,10 @@
+import { useMemo } from "react";
 import { Image } from "@chakra-ui/react";
 
 import { VideoActionIcon } from "components/atoms/VideoActionIcon";
 import playVideoSvg from "assets/images/play.svg";
 import pauseVideoSvg from "assets/images/pause.svg";
 import watchAgainSvg from "assets/images/watch-again.svg";
-import { useMemo } from "react";
 
 interface ScreenControllersProps {
   onClick: () => void;

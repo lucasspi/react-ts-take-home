@@ -1,5 +1,5 @@
-import { Input, SystemStyleObject } from "@chakra-ui/react";
 import { ChangeEvent } from "react";
+import { Input, SystemStyleObject } from "@chakra-ui/react";
 
 interface SliderInputProps {
   min: number;

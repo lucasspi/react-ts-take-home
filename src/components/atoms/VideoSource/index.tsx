@@ -2,7 +2,7 @@ import { ChangeEvent, RefObject } from "react";
 
 interface VideoSourceProps {
   id: string;
-  ref: RefObject<HTMLVideoElement>;
+  forwardedRef: RefObject<HTMLVideoElement>;
   onTimeUpdate: (e: ChangeEvent<HTMLVideoElement>) => void;
   onClick: () => void;
   onLoadedData: () => void;
@@ -11,7 +11,7 @@ interface VideoSourceProps {
 
 export const VideoSource = ({
   id,
-  ref,
+  forwardedRef,
   onTimeUpdate,
   onClick,
   onLoadedData,
@@ -19,8 +19,9 @@ export const VideoSource = ({
 }: VideoSourceProps) => (
   <video
     id={id}
-    ref={ref}
+    ref={forwardedRef}
     playsInline
+    autoPlay
     preload="auto"
     tabIndex={-1}
     onTimeUpdate={onTimeUpdate}

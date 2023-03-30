@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import {
   Box,
   Button,
@@ -5,7 +6,6 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@chakra-ui/react";
-import { useMemo, useState } from "react";
 
 interface DropdownProps {
   onChange: (e: number) => void;
@@ -21,14 +21,17 @@ export const Dropdown = ({
   options,
 }: DropdownProps) => {
   const [isOpen, setOpen] = useState(false);
+
   const displayValue = useMemo(
     () => options.filter((item) => item.value === value)[0],
     [options, value]
   );
+
   const setValue = (selected: number) => {
     onChange(selected);
     setOpen(false);
   };
+
   return (
     <Box>
       <Popover isOpen={isOpen} onClose={() => setOpen(false)}>

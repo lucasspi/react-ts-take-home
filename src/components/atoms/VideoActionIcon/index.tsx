@@ -1,5 +1,5 @@
-import { Box, Button } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import { Box, Button } from "@chakra-ui/react";
 
 interface VideoActionIconProps {
   onClick: () => void;

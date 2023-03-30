@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running this project
 
 In the project directory, run first 
 
@@ -26,3 +26,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Once the build is complete the deploy will start to S3 bucket called `withours.spirandeli.com`
+
+
+

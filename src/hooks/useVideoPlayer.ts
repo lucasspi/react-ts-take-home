@@ -1,5 +1,5 @@
 import { useState, useEffect, ChangeEvent, RefObject } from "react";
-import { convertSecondsInMinutes } from "../utils/timeConvert";
+import { convertSecondsInMinutes } from "utils/timeConvert";
 
 const useVideoPlayer = (videoElement: RefObject<HTMLVideoElement>) => {
   const [playerState, setPlayerState] = useState({
