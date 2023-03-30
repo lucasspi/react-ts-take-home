@@ -164,21 +164,6 @@ export const useVideoStore = create<IVideoStore>((set) => ({
       if (state.videoEl?.current?.requestFullscreen) {
         state.videoEl?.current?.requestFullscreen();
       }
-      //@ts-ignore
-      if (state.videoEl?.current?.webkitRequestFullscreen) {
-        //@ts-ignore
-        state.videoEl?.current?.webkitRequestFullscreen();
-      }
-      //@ts-ignore
-      if (state.videoEl?.current?.mozFullScreenElement) {
-        //@ts-ignore
-        state.videoEl?.current?.mozFullScreenElement();
-      }
-      //@ts-ignore
-      if (state.videoEl?.current?.webkitFullscreenElement) {
-        //@ts-ignore
-        state.videoEl?.current?.webkitFullscreenElement();
-      }
       return {
         ...state,
         playerState: {
