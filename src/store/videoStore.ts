@@ -60,7 +60,9 @@ export const useVideoStore = create<IVideoStore>((set) => ({
         playerState: {
           ...state.playerState,
           isPlaying: !state.playerState.isPlaying,
-          duration: convertSecondsInMinutes(state.videoEl?.current?.duration || 0),
+          duration: convertSecondsInMinutes(
+            state.videoEl?.current?.duration || 0
+          ),
         },
       };
     }),
@@ -146,6 +148,7 @@ export const useVideoStore = create<IVideoStore>((set) => ({
         state.videoEl?.current?.volume === 0
       ) {
         state.videoEl.current.volume = state.playerState.volume ? 0 : 1;
+        state.videoEl.current.muted = state.playerState.volume ? true : false;
       }
       return {
         ...state,
@@ -160,6 +163,21 @@ export const useVideoStore = create<IVideoStore>((set) => ({
     set((state) => {
       if (state.videoEl?.current?.requestFullscreen) {
         state.videoEl?.current?.requestFullscreen();
+      }
+      //@ts-ignore
+      if (state.videoEl?.current?.webkitRequestFullscreen) {
+        //@ts-ignore
+        state.videoEl?.current?.webkitRequestFullscreen();
+      }
+      //@ts-ignore
+      if (state.videoEl?.current?.mozFullScreenElement) {
+        //@ts-ignore
+        state.videoEl?.current?.mozFullScreenElement();
+      }
+      //@ts-ignore
+      if (state.videoEl?.current?.webkitFullscreenElement) {
+        //@ts-ignore
+        state.videoEl?.current?.webkitFullscreenElement();
       }
       return {
         ...state,
