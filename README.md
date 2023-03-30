@@ -1,6 +1,6 @@
 # Withours Take Home - Lucas Spirandeli
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and the solution was based on [Withours Takehome](https://withours.notion.site/OURS-Engineering-Takehome-Project-70e4dadd78fc474d92fad13d83f13b9b)
 
 ## Running this project
 
