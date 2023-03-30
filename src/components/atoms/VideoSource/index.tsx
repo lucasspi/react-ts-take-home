@@ -21,7 +21,6 @@ export const VideoSource = ({
     id={id}
     ref={forwardedRef}
     playsInline
-    autoPlay
     preload="auto"
     tabIndex={-1}
     onTimeUpdate={onTimeUpdate}
