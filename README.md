@@ -41,7 +41,7 @@ Once the build is complete the deploy will start to S3 bucket called `withours.s
     ├────── atoms               # Granular UI components
     ├────── molecules           # UI pieces
     ├────── organisms           # UI Block components
-    ├── constants               # Source files (alternatively `lib` or `app`)
+    ├── constants               # constants/data
     ├── hooks                   # Custom hooks
     ├── store                   # zustand store files
     ├── utils                   # utils/reusable files
